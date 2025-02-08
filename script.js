@@ -4,7 +4,7 @@ const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
     style: 'mapbox://styles/mapbox/light-v11', // style URL
     center: [-122.957359, 50.116322], // starting position [lng, lat]
-    zoom: 9 // starting zoom level
+    zoom: 12 // starting zoom level
 });
 
 map.on('load', () => {
@@ -34,6 +34,8 @@ map.on('load', () => {
         'source': 'ski_lifts'
 
     });
+    
+
 
     map.addSource('dem', {
         'type': 'raster-dem',
