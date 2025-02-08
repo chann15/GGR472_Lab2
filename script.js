@@ -8,6 +8,33 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', () => {
+
+
+    map.addSource('whistler_resort', {
+        type: 'geojson',
+        data: 'https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/whistler_ski_resorts_area.geojson' // Your URL to your buildings.geojson file
+    });
+
+    map.addLayer({
+        'id': 'whistler_resort-layer',
+        'type': 'fill',
+        'source': 'whistler_resort',
+        'paint': {
+            'fill-opacity': 0.4},
+    });
+
+    map.addSource('ski_lifts',{
+        "type": 'geojson',
+        "data": "https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/lifts.geojson",
+    });
+
+    map.addLayer({
+        'id': 'ski_lift-layer',
+        'type': 'line',
+        'source': 'ski_lifts'
+
+    });
+
     map.addSource('dem', {
         'type': 'raster-dem',
         'url': 'mapbox://mapbox.mapbox-terrain-dem-v1'
@@ -22,5 +49,5 @@ map.on('load', () => {
         // where hillshading sits in the Mapbox Streets style.
         'land-structure-polygon'
     );
-});
 
+});
