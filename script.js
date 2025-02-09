@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbm5pNDIiLCJhIjoiY201cjdmdmJxMDdodTJycHc2a
 
 const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
-    style: 'mapbox://styles/mapbox/light-v11', // style URL
+    style: 'mapbox://styles/mapbox/outdoors-v11', // style URL
     center: [-122.957359, 50.116322], // starting position [lng, lat]
     zoom: 12 // starting zoom level
 });
@@ -34,8 +34,6 @@ map.on('load', () => {
         'source': 'ski_lifts'
 
     });
-    
-
 
     map.addSource('dem', {
         'type': 'raster-dem',
@@ -46,6 +44,7 @@ map.on('load', () => {
             'id': 'hillshading',
             'source': 'dem',
             'type': 'hillshade'
+            
         },
         // Insert below land-structure-polygon layer,
         // where hillshading sits in the Mapbox Streets style.
