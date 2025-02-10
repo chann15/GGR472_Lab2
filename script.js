@@ -23,7 +23,7 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'whistler_resort',
         'paint': {
-            'fill-opacity': 0.4,
+            'fill-opacity': 0.5,
             'fill-color': '#FFFFFF',
         },
     });
