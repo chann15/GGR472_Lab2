@@ -3,8 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbm5pNDIiLCJhIjoiY201cjdmdmJxMDdodTJycHc2a
 const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
     style: 'mapbox://styles/channi42/cm6x6mopa000h01qu6frx7auy', // style URL           //style URL doesn't seem to work
-    center: [-122.957359, 50.116322], // starting position [lng, lat]
-    zoom: 12, // starting zoom level
+    center: [-122.94, 50.1], // starting position [lng, lat]
+    zoom: 12.5, // starting zoom level
     bearing: 142,
     pitch: 45
 
@@ -28,22 +28,6 @@ map.on('load', () => {
         },
     });
 
-    map.addSource('ski_lifts',{
-        "type": 'geojson',
-        "data": "https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/lifts.geojson",
-    });
-
-    map.addLayer({
-        'id': 'ski_lift-layer',
-        'type': 'line',
-        'source': 'ski_lifts',
-        'paint':{
-            'line-color': '#0000FF',
-            'line-width': 2.3
-        }
-
-    });
-
     map.addSource('ski_runs',{
         "type": 'geojson',
         "data": "https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/runs.geojson",
@@ -53,30 +37,43 @@ map.on('load', () => {
         'id': 'ski_runs-layer',
         'type': 'line',
         'source': 'ski_runs',
-        'paint': {
-        'line-color': [
-            'match',
-            ['get', 'colorName'],
-            'green', '#2E6F40', // Green
-            'blue', '#2E5984',  // Blue
-            'black', '#000000', // Black
-            'red', '#FF0000',   // Red
-            '#808080' // Default (gray) if no match
-        ],
-        'line-width': 2
-    }
-
+        'paint': {'line-color': [
+                'match',
+                ['get', 'colorName'],
+                'green', '#2E6F40', // Green
+                'blue', '#2E5984',  // Blue
+                'black', '#000000', // Black
+                'red', '#FF0000',   // Red
+                '#808080'],
+                'line-width': 2
+        }
     });
 
-    map.addSource('Transport_Locations',{
-        'type': 'shapefile',
-        'data': 'mapbox://mapbox.channi42.27hn8ddz'
+    map.addSource('ski_lifts',{
+        "type": 'geojson',
+        "data": "https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/lifts.geojson",
     });
 
     map.addLayer({
-        'id': 'Transport_Locations-layer',
-        'type': 'points',
-        'source': 'Transport_Locations'
+        'id': 'ski_lift-outline',
+        'type': 'line',
+        'source': 'ski_lifts',
+        'paint': {
+            'line-color': '#FFD700', 
+            'line-width': 6,         
+            'line-opacity': 0.9     
+        }
     });
+    
 
+    map.addLayer({
+        'id': 'ski_lift-layer',
+        'type': 'line',
+        'source': 'ski_lifts',
+        'paint': {
+            'line-color': '#000000', 
+            'line-width': 1.5          
+        }
+    });
+    
 });

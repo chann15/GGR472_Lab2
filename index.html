@@ -5,20 +5,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My first web map</title>
         <script src='https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.js'></script>
-        <link href='https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css'
-        rel='stylesheet' />
+        <link href='https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css'rel='stylesheet' />
         <link rel="stylesheet" href="style.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const links = document.querySelectorAll("a.nav-link");
+                links.forEach(link => {
+                    link.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        const targetId = this.getAttribute("href").substring(1);
+                        document.getElementById(targetId).scrollIntoView({
+                            behavior: "smooth"
+                        });
+                    });
+                });
+            });
+        </script>
     </head>
 
 
 
+
+
     <body>
+
+        <section class="d-flex justify-content-center align-items-center py-5" style="height: 30vh; width: 100%; background: url('https://scene7.vailresorts.com/is/image/vailresorts/20230110_WB_Sylvestre_008:Medium-Hero?resMode=sharp2&w=2880&h=750&wid=1470&fit=constrain,1&dpr=on,2'); background-size: cover;">
+                <div class = 'web-title' style="color: #800020;">Whistler Blackcomb</div>
+        </section>
+
+        <section class="py-5" style="height: 60vh; background: white">
+            <div class="container"> <!-- Bootstrap container for proper spacing -->
+                <div class="row align-items-center mx-15"> <!-- Only one row -->
+                    <div class="col">
+                        <img src="https://amainsider.com/wp-content/uploads/2016/10/Whistler-Village-Winter.jpg" 
+                             width="90%" height="90%" class="img-fluid"> 
+                    </div>
+                    <div class="col">
+                        <div class="info-background">
+                            <div class="info-write-heading">Welcome to Whistler!</div>
+                            <p class="info-write">
+                                Whistler Blackcomb, is home to the 2010 Winter Olympics as well as the 2025 Invictus Games and is considered
+                                to be the #1 ski resort in North America. 
+                            </p>
+                            <p class="info-write">
+                                The interactive map below displays the resort, including features such as ski lifts, runs, the village,
+                                and possible transit in and out of the village.                           
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    
         <div id="my-map" class="map-container"></div>
-        <script src="script.js"></script>
+        <script src="script.js"></script>    
+    
     </body>
-
-
-
 
 
 </html>
