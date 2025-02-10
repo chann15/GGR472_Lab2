@@ -44,6 +44,30 @@ map.on('load', () => {
 
     });
 
+    map.addSource('ski_runs',{
+        "type": 'geojson',
+        "data": "https://raw.githubusercontent.com/chann15/GGR472_Lab2/main/runs.geojson",
+    });
+
+    map.addLayer({
+        'id': 'ski_runs-layer',
+        'type': 'line',
+        'source': 'ski_runs',
+        'paint': {
+        'line-color': [
+            'match',
+            ['get', 'colorName'],
+            'green', '#2E6F40', // Green
+            'blue', '#2E5984',  // Blue
+            'black', '#000000', // Black
+            'red', '#FF0000',   // Red
+            '#808080' // Default (gray) if no match
+        ],
+        'line-width': 2
+    }
+
+    });
+
     map.addSource('Transport_Locations',{
         'type': 'shapefile',
         'data': 'mapbox://mapbox.channi42.27hn8ddz'
