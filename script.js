@@ -2,9 +2,12 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhbm5pNDIiLCJhIjoiY201cjdmdmJxMDdodTJycHc2a
 
 const map = new mapboxgl.Map({
     container: 'my-map', // map container ID
-    style: 'mapbox://styles/mapbox/outdoors-v11', // style URL
+    style: 'mapbox://styles/channi42/cm6x6mopa000h01qu6frx7auy', // style URL           //style URL doesn't seem to work
     center: [-122.957359, 50.116322], // starting position [lng, lat]
-    zoom: 12 // starting zoom level
+    zoom: 12, // starting zoom level
+    bearing: 142,
+    pitch: 45
+
 });
 
 map.on('load', () => {
@@ -20,7 +23,9 @@ map.on('load', () => {
         'type': 'fill',
         'source': 'whistler_resort',
         'paint': {
-            'fill-opacity': 0.4},
+            'fill-opacity': 0.4,
+            'fill-color': '#FFFFFF',
+        },
     });
 
     map.addSource('ski_lifts',{
@@ -31,24 +36,23 @@ map.on('load', () => {
     map.addLayer({
         'id': 'ski_lift-layer',
         'type': 'line',
-        'source': 'ski_lifts'
+        'source': 'ski_lifts',
+        'paint':{
+            'line-color': '#0000FF',
+            'line-width': 2.3
+        }
 
     });
 
-    map.addSource('dem', {
-        'type': 'raster-dem',
-        'url': 'mapbox://mapbox.mapbox-terrain-dem-v1'
+    map.addSource('Transport_Locations',{
+        'type': 'shapefile',
+        'data': 'mapbox://mapbox.channi42.27hn8ddz'
     });
-    map.addLayer(
-        {
-            'id': 'hillshading',
-            'source': 'dem',
-            'type': 'hillshade'
-            
-        },
-        // Insert below land-structure-polygon layer,
-        // where hillshading sits in the Mapbox Streets style.
-        'land-structure-polygon'
-    );
+
+    map.addLayer({
+        'id': 'Transport_Locations-layer',
+        'type': 'points',
+        'source': 'Transport_Locations'
+    });
 
 });
