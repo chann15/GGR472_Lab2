@@ -75,5 +75,9 @@ map.on('load', () => {
             'line-width': 1.5          
         }
     });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
     
 });
+
