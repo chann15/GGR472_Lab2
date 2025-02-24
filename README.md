@@ -1,3 +1,3 @@
-**GGR472 Lab2**
+**Portfolio**
 
-This is a [map](https://chann15.github.io/GGR472_Lab2/) outlining the ski resort Whistler Blackcomb.
+This is a [website](https://chann15.github.io/GGR472_Lab2/) displaying some of the work that I've done over the past couple years.
